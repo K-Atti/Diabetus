@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_Copy"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:icon="@drawable/ic_baseline_content_copy_24"
+        android:title="@string/copy"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_Save"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:iconTint="@color/white"
+        android:icon="@drawable/ic_save_33"
+        android:title="@string/save"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_delete_entry"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:icon="@drawable/ic_baseline_delete_24"
+        android:iconTint="@color/white"
+        android:title="@string/delete"
+        app:showAsAction="ifRoom" />
+</menu>

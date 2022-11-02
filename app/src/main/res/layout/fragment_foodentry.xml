@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".food.FoodEntry_Fragment">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/frameLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textName"
+                    style="@style/MyTextView"
+                    android:text="@string/Name"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/textBrand"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textBrand"
+                    style="@style/MyTextView"
+                    android:hint="@string/Brand"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textName"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/et_Name"
+                    style="@style/MyEditTextView"
+                    android:autofillHints="name"
+                    android:hint="@string/Name"
+                    android:inputType="text"
+                    app:layout_constraintEnd_toStartOf="@+id/et_Brand"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textName" />
+
+                <EditText
+                    android:id="@+id/et_Brand"
+                    style="@style/MyEditTextView"
+                    android:autofillHints="name"
+                    android:hint="@string/Brand"
+                    android:inputType="text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/et_Name"
+                    app:layout_constraintTop_toBottomOf="@+id/textBrand" />
+
+                <TextView
+                    android:id="@+id/textCalorie"
+                    style="@style/MyTextView"
+                    android:text="@string/Calorie"
+                    app:layout_constraintBottom_toBottomOf="@+id/et_Calorie"
+                    app:layout_constraintEnd_toStartOf="@+id/et_Calorie"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_Name" />
+
+                <EditText
+                    android:id="@+id/et_Calorie"
+                    style="@style/MyEditTextView"
+                    android:autofillHints=""
+                    android:hint="@string/DefaultDecimal"
+                    android:inputType="number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textCalorie"
+                    app:layout_constraintTop_toBottomOf="@+id/et_Brand" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/linearLayout8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:backgroundTint="@color/black_overlay"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_Calorie">
+
+                    <TextView
+                        android:id="@+id/textSaturatedFat"
+                        style="@style/MyTextView"
+                        android:backgroundTint="@android:color/transparent"
+                        android:text="@string/saturated_fat"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_SaturatedFat"
+                        app:layout_constraintEnd_toStartOf="@+id/et_SaturatedFat"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/et_SaturatedFat" />
+
+                    <EditText
+                        android:id="@+id/et_SaturatedFat"
+                        style="@style/MyEditTextView"
+                        android:hint="@string/DefaultDecimal"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textSaturatedFat"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textUnsaturatedFat"
+                        style="@style/MyTextView"
+                        android:text="@string/unsaturated_fat"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_UnsaturatedFat"
+                        app:layout_constraintEnd_toStartOf="@+id/et_UnsaturatedFat"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/et_UnsaturatedFat" />
+
+                    <EditText
+                        android:id="@+id/et_UnsaturatedFat"
+                        style="@style/MyEditTextView"
+                        android:hint="@string/DefaultDecimal"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textUnsaturatedFat"
+                        app:layout_constraintTop_toBottomOf="@+id/et_SaturatedFat" />
+
+                    <TextView
+                        android:id="@+id/textTransFat"
+                        style="@style/MyTextView"
+                        android:text="@string/trans_fat"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_TransFat"
+                        app:layout_constraintEnd_toStartOf="@+id/et_TransFat"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/et_TransFat" />
+
+                    <EditText
+                        android:id="@+id/et_TransFat"
+                        style="@style/MyEditTextView"
+                        android:hint="@string/DefaultDecimal"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textTransFat"
+                        app:layout_constraintTop_toBottomOf="@+id/et_UnsaturatedFat" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/textSodium"
+                    style="@style/MyTextView"
+                    android:text="@string/sodium"
+                    app:layout_constraintBottom_toBottomOf="@+id/et_Sodium"
+                    app:layout_constraintEnd_toStartOf="@+id/et_Sodium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+                <EditText
+                    android:id="@+id/et_Sodium"
+                    style="@style/MyEditTextView"
+                    android:hint="@string/DefaultDecimal"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textSodium"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_Sodium">
+
+                    <TextView
+                        android:id="@+id/textCarb"
+                        style="@style/MyTextView"
+                        android:text="@string/carb"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_Carb"
+                        app:layout_constraintEnd_toStartOf="@+id/et_Carb"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/et_Carb" />
+
+                    <EditText
+                        android:id="@+id/et_Carb"
+                        style="@style/MyEditTextView"
+                        android:hint="@string/DefaultDecimal"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintBottom_toTopOf="@+id/et_Sugar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textCarb"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textSugar"
+                        style="@style/MyTextView"
+                        android:text="@string/sugar"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_Sugar"
+                        app:layout_constraintEnd_toStartOf="@+id/et_Sugar"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/et_Sugar" />
+
+                    <EditText
+                        android:id="@+id/et_Sugar"
+                        style="@style/MyEditTextView"
+                        android:hint="@string/DefaultDecimal"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintBottom_toTopOf="@+id/et_Fiber"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textSugar"
+                        app:layout_constraintTop_toBottomOf="@+id/et_Carb" />
+
+                    <TextView
+                        android:id="@+id/textFiber"
+                        style="@style/MyTextView"
+                        android:text="@string/fiber"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_Fiber"
+                        app:layout_constraintEnd_toStartOf="@+id/et_Fiber"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/et_Fiber" />
+
+                    <EditText
+                        android:id="@+id/et_Fiber"
+                        style="@style/MyEditTextView"
+                        android:hint="@string/DefaultDecimal"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textFiber"
+                        app:layout_constraintTop_toBottomOf="@+id/et_Sugar" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/textProtein"
+                    style="@style/MyTextView"
+                    android:text="@string/protein"
+                    app:layout_constraintBottom_toBottomOf="@+id/et_Protein"
+                    app:layout_constraintEnd_toStartOf="@+id/et_Protein"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/et_Protein" />
+
+                <EditText
+                    android:id="@+id/et_Protein"
+                    style="@style/MyEditTextView"
+                    android:hint="@string/DefaultDecimal"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textProtein"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+                <TextView
+                    android:id="@+id/textWeight"
+                    style="@style/MyTextView"
+                    android:text="@string/Weight"
+                    app:layout_constraintBottom_toBottomOf="@+id/et_Weight"
+                    app:layout_constraintEnd_toStartOf="@+id/et_Weight"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/et_Weight" />
+
+                <EditText
+                    android:id="@+id/et_Weight"
+                    style="@style/MyEditTextView"
+                    android:hint="@string/DefaultDecimal"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textWeight"
+                    app:layout_constraintTop_toBottomOf="@+id/et_Protein" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</ScrollView>

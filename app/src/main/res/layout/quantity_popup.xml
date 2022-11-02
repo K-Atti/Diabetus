@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_overlay">
+
+    <Button
+        android:id="@+id/btn_Quantity5"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Quantity6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_Quantity4"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Quantity1" />
+
+    <Button
+        android:id="@+id/btn_Quantity7"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_Quantity6"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Quantity3" />
+
+    <Button
+        android:id="@+id/btn_Quantity6"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Quantity7"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_Quantity5"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Quantity2" />
+
+    <Button
+        android:id="@+id/btn_Quantity4"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Quantity5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Quantity0" />
+
+    <EditText
+        android:id="@+id/et_Quantity"
+        style="@style/MyEditTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/DefaultNumber"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textQuantityName" />
+
+    <Button
+        android:id="@+id/btn_Quantity0"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Quantity1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_Quantity" />
+
+    <Button
+        android:id="@+id/btn_Quantity1"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Quantity2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_Quantity0"
+        app:layout_constraintTop_toBottomOf="@+id/et_Quantity" />
+
+    <Button
+        android:id="@+id/btn_Quantity2"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Quantity3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_Quantity1"
+        app:layout_constraintTop_toBottomOf="@+id/et_Quantity" />
+
+    <Button
+        android:id="@+id/btn_Quantity3"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_Quantity2"
+        app:layout_constraintTop_toBottomOf="@+id/et_Quantity" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch_Quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/purple_500"
+        android:text="@string/Empty"
+        app:layout_constraintEnd_toStartOf="@+id/text_Piece"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/text_Gram"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Quantity6" />
+
+    <TextView
+        android:id="@+id/text_Gram"
+        style="@style/MyTextView"
+        android:layout_marginTop="32dp"
+        android:text="@string/gram"
+        app:layout_constraintEnd_toStartOf="@+id/switch_Quantity"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Quantity4" />
+
+    <TextView
+        android:id="@+id/text_Piece"
+        style="@style/MyTextView"
+        android:layout_marginTop="32dp"
+        android:text="@string/piece"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/switch_Quantity"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Quantity7" />
+
+    <Button
+        android:id="@+id/btn_Ok"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="162dp"
+        android:text="@android:string/ok"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_Quantity" />
+
+    <TextView
+        android:id="@+id/textQuantityName"
+        style="@style/MyTextView"
+        android:layout_marginBottom="18dp"
+        android:text="@string/Empty"
+        app:layout_constraintBottom_toTopOf="@+id/et_Quantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

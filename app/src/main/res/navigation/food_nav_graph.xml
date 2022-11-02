@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/food_nav_graph"
+    app:startDestination="@id/foodeditor">
+
+    <fragment
+        android:id="@+id/foodeditor"
+        android:name="com.example.diabetus.food.FoodEditor"
+        android:label="fragment_foodeditor"
+        tools:layout="@layout/fragment_foodeditor" >
+        <action
+            android:id="@+id/action_foodeditor_to_foodentry"
+            app:destination="@id/foodentry" />
+        <action
+            android:id="@+id/action_foodeditor_to_mealFragment"
+            app:destination="@id/mealFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodentry"
+        android:name="com.example.diabetus.food.FoodEntry_Fragment"
+        android:label="fragment_foodentry"
+        tools:layout="@layout/fragment_foodentry" >
+        <action
+            android:id="@+id/action_foodentry_to_foodeditor"
+            app:destination="@id/foodeditor" />
+    </fragment>
+    <fragment
+        android:id="@+id/mealFragment"
+        android:name="com.example.diabetus.diary.MealFragment"
+        android:label="fragment_meal"
+        tools:layout="@layout/fragment_meal" >
+        <action
+            android:id="@+id/action_mealFragment_to_foodeditor"
+            app:destination="@id/foodeditor" />
+    </fragment>
+</navigation>

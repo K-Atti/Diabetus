@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/diary_nav_graph"
+    app:startDestination="@id/diaryList_Fragment">
+
+    <fragment
+        android:id="@+id/diaryList_Fragment"
+        android:name="com.example.diabetus.diary.DiaryList_Fragment"
+        android:label="fragment_diary_list_"
+        tools:layout="@layout/fragment_diary_list_" >
+        <action
+            android:id="@+id/action_diaryList_Fragment_to_entryFragment"
+            app:destination="@id/entryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/entryFragment"
+        android:name="com.example.diabetus.diary.EntryFragment"
+        android:label="fragment_entry"
+        tools:layout="@layout/fragment_entry" >
+        <action
+            android:id="@+id/action_entryFragment_to_diaryList_Fragment"
+            app:destination="@id/diaryList_Fragment" />
+        <action
+            android:id="@+id/action_entryFragment_to_mealFragment"
+            app:destination="@id/mealFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mealFragment"
+        android:name="com.example.diabetus.diary.MealFragment"
+        android:label="fragment_meal"
+        tools:layout="@layout/fragment_meal" >
+        <action
+            android:id="@+id/action_mealFragment_to_entryFragment"
+            app:destination="@id/entryFragment" />
+    </fragment>
+</navigation>

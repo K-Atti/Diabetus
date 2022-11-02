@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/ic_baseline_home_24"
+        android:id="@+id/action_home"
+        android:title="@string/home" />
+    <item
+        android:icon="@drawable/ic_meal"
+        android:id="@+id/action_food"
+        android:title="@string/food" />
+    <item
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:id="@+id/action_diary"
+        android:title="@string/diary" />
+    <item
+        android:icon="@drawable/ic_accounts"
+        android:id="@+id/action_signin"
+        android:title="@string/signin" />
+</menu>

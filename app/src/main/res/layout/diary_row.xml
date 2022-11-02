@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:contentPadding="16dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="5dp">
+
+
+        <TextView
+            android:id="@+id/diary_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:background="@color/material_dynamic_neutral20"
+            android:hint="@string/DateFormat"
+            android:inputType="none"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/diary_bs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/diary_bs"
+                android:layout_width="48dp"
+                android:layout_height="0dp"
+                android:background="@color/black"
+                android:gravity="center"
+                android:inputType="none"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/diary_time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout12"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/diary_time">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/diary_MealImage"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="24dp"
+                    app:srcCompat="@drawable/ic_meal"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:id="@+id/diary_CalorieText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/black"
+                    android:text="Cal: "
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/diary_Calorie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black"
+                    android:text="@string/DefaultDecimal"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/diary_CarbText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/black"
+                    android:text="Carb: "
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/diary_Carb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black"
+                    android:text="1.0"
+                    android:textColor="@color/white"
+                    tools:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/diary_ProteinText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/black"
+                    android:text="Protein: "
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/diary_Protein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black"
+                    android:text="2.0"
+                    android:textColor="@color/white"
+                    tools:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/diary_FaText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/black"
+                    android:text="Fat : "
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/diary_Fat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black"
+                    android:text="3.0"
+                    android:textColor="@color/white"
+                    tools:text="@string/DefaultDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/diary_RapidImage"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="24dp"
+                    app:srcCompat="@drawable/ic_injection_4"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:id="@+id/diary_RapidInsulinText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/rapid_insulin" />
+
+                <TextView
+                    android:id="@+id/diary_RapidInsulin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:background="@color/black"
+                    android:text="4.0"
+                    android:textColor="@color/white"
+                    tools:text="@string/DefaultDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/diary_BasalImage"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="24dp"
+                    app:srcCompat="@drawable/ic_injection_4"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:id="@+id/diary_BasalInsulinText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/basal_insulin" />
+
+                <TextView
+                    android:id="@+id/diary_BasalInsulin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/black"
+                    android:text="5.0"
+                    android:textColor="@color/white"
+                    tools:text="@string/DefaultDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/diary_WeightImage"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="24dp"
+                    app:srcCompat="@drawable/ic_scale_weight"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:id="@+id/diary_WeightText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/Weight" />
+
+                <TextView
+                    android:id="@+id/diary_Weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="43dp"
+                    android:background="@color/black"
+                    android:text="6.0"
+                    android:textColor="@color/white"
+                    tools:text="@string/DefaultDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/diary_MealTextImage"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="24dp"
+                    app:srcCompat="@drawable/ic_note_72"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:id="@+id/diary_Meal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/Empty"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

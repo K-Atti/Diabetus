@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "125407162385",
+    "project_id": "diabetus-81dc8",
+    "storage_bucket": "diabetus-81dc8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125407162385:android:c6c55e746140b0ee4941b0",
+        "android_client_info": {
+          "package_name": "com.example.diabetus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125407162385-tql9a7d1gj3p36fqjdugl379hsn7oq79.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqjKLa3zIUc5QqI-k6s7_g1Q_2beZuCyc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125407162385-tql9a7d1gj3p36fqjdugl379hsn7oq79.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
