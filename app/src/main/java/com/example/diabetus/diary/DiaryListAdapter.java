@@ -79,14 +79,14 @@ public class DiaryListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         private final TextView diary_calText, diary_fatText, diary_carbText, diary_protText,
                 diary_basalText, diary_rapidText, diary_weightText;
-        private final TextView diary_time, diary_bs, diary_cal, diary_carb, diary_protein, diary_fat,
+        private final TextView diary_header, diary_bs, diary_cal, diary_carb, diary_protein, diary_fat,
                 diary_rapidInsulin, diary_basalInsulin, diary_meal, diary_weight;
         private final ImageView diary_MealImage, diary_RapidImage, diary_BasalImage,
                 diary_MealTextImage, diary_WeightImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            diary_time = itemView.findViewById(R.id.diary_time);
+            diary_header = itemView.findViewById(R.id.diary_header);
             diary_bs = itemView.findViewById(R.id.diary_bs);
             diary_cal = itemView.findViewById(R.id.diary_Calorie);
             diary_carb = itemView.findViewById(R.id.diary_Carb);
@@ -123,7 +123,7 @@ public class DiaryListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         public void bind(final DiaryEntry entry) {
-            diary_time.setText(entry.getStringTime());
+            diary_header.setText(entry.getStringTime() + ", " + entry.getCategory());
             diary_bs.setText(String.format("%.1f", entry.getBs()));
             diary_cal.setText(String.format("%.1f", entry.getMeal().getCalorie()));
             diary_carb.setText(String.format("%.1f", entry.getMeal().getCarb()));

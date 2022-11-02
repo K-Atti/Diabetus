@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -22,12 +21,11 @@
 
 
         <TextView
-            android:id="@+id/diary_time"
+            android:id="@+id/diary_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:background="@color/material_dynamic_neutral20"
-            android:hint="@string/DateFormat"
+            android:hint="@string/TimeFormat"
             android:inputType="none"
             android:textColor="@color/white"
             android:textSize="16sp"
@@ -46,7 +44,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/diary_time"
+                app:layout_constraintBottom_toBottomOf="@+id/diary_header"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,7 +56,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/diary_time">
+            app:layout_constraintTop_toBottomOf="@+id/diary_header">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,7 +69,8 @@
                     android:layout_height="16dp"
                     android:layout_marginStart="24dp"
                     app:srcCompat="@drawable/ic_meal"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    android:contentDescription="@string/meal" />
 
                 <TextView
                     android:id="@+id/diary_CalorieText"
@@ -104,9 +103,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/black"
-                    android:text="1.0"
-                    android:textColor="@color/white"
-                    tools:text="@string/DefaultDecimal" />
+                    android:text="@string/DefaultDecimal"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/diary_ProteinText"
@@ -122,9 +120,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/black"
-                    android:text="2.0"
-                    android:textColor="@color/white"
-                    tools:text="@string/DefaultDecimal" />
+                    android:text="@string/DefaultDecimal"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/diary_FaText"
@@ -140,9 +137,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/black"
-                    android:text="3.0"
-                    android:textColor="@color/white"
-                    tools:text="@string/DefaultDecimal" />
+                    android:text="@string/DefaultDecimal"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <LinearLayout
@@ -156,7 +152,8 @@
                     android:layout_height="16dp"
                     android:layout_marginStart="24dp"
                     app:srcCompat="@drawable/ic_injection_4"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    android:contentDescription="@string/rapid_insulin" />
 
                 <TextView
                     android:id="@+id/diary_RapidInsulinText"
@@ -171,9 +168,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
                     android:background="@color/black"
-                    android:text="4.0"
-                    android:textColor="@color/white"
-                    tools:text="@string/DefaultDecimal" />
+                    android:text="@string/DefaultDecimal"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <LinearLayout
@@ -187,7 +183,8 @@
                     android:layout_height="16dp"
                     android:layout_marginStart="24dp"
                     app:srcCompat="@drawable/ic_injection_4"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    android:contentDescription="@string/basal_insulin" />
 
                 <TextView
                     android:id="@+id/diary_BasalInsulinText"
@@ -202,9 +199,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:background="@color/black"
-                    android:text="5.0"
-                    android:textColor="@color/white"
-                    tools:text="@string/DefaultDecimal" />
+                    android:text="@string/DefaultDecimal"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <LinearLayout
@@ -218,7 +214,8 @@
                     android:layout_height="16dp"
                     android:layout_marginStart="24dp"
                     app:srcCompat="@drawable/ic_scale_weight"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    android:contentDescription="@string/Weight" />
 
                 <TextView
                     android:id="@+id/diary_WeightText"
@@ -233,9 +230,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="43dp"
                     android:background="@color/black"
-                    android:text="6.0"
-                    android:textColor="@color/white"
-                    tools:text="@string/DefaultDecimal" />
+                    android:text="@string/DefaultDecimal"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <LinearLayout
@@ -249,7 +245,8 @@
                     android:layout_height="16dp"
                     android:layout_marginStart="24dp"
                     app:srcCompat="@drawable/ic_note_72"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    android:contentDescription="@string/Note" />
 
                 <TextView
                     android:id="@+id/diary_Meal"
