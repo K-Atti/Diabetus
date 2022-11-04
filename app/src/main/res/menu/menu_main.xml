@@ -14,5 +14,5 @@
     <item
         android:icon="@drawable/ic_accounts"
         android:id="@+id/action_signin"
-        android:title="@string/signin" />
+        android:title="@string/database" />
 </menu>

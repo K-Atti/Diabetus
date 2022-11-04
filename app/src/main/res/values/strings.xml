@@ -58,9 +58,11 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="copy">Copy</string>
-    <string name="signin">SignIn</string>
+    <string name="sign_in">Sign in</string>
     <string name="upload">Upload</string>
     <string name="hello">Hello, %1$s!</string>
     <string name="fat">Fat</string>
     <string name="Note">Note</string>
+    <string name="sign_out">Sign out</string>
+    <string name="database">Database</string>
 </resources>

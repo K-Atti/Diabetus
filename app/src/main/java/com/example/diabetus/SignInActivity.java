@@ -33,10 +33,18 @@ import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 
 import java.util.Collections;
+import java.util.Objects;
 
 public class SignInActivity extends AppCompatActivity {
     private DriveServiceHelper driveServiceHelper;
     ActionBarDrawerToggle actionBarDrawerToggle;
+    private final GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .requestScopes(new Scope(DriveScopes.DRIVE_FILE))
+            .build();
+
+    TextView text_signIn;
+    Button btn_upload, btn_sign_in, btn_sign_out;
 
     ActivityResultLauncher<Intent> signInResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -52,16 +60,26 @@ public class SignInActivity extends AppCompatActivity {
         com.example.diabetus.databinding.ActivitySigninBinding binding = ActivitySigninBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Button btn_upload = findViewById(R.id.btn_upload);
+        btn_upload = findViewById(R.id.btn_upload);
         btn_upload.setOnClickListener(this::uploadDatabase);
 
-        TextView text_signIn = findViewById(R.id.signin_welcome);
+        btn_sign_in = findViewById(R.id.btn_sign_in);
+        btn_sign_in.setOnClickListener(v -> requestSignIn());
+
+        btn_sign_out = findViewById(R.id.btn_sign_out);
+        btn_sign_out.setOnClickListener(v -> signOut());
+
+        text_signIn = findViewById(R.id.signin_welcome);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account == null) {
-            requestSignIn();
+            text_signIn.setText(String.format(getResources().getString(R.string.hello), "please sign in"));
+            btn_sign_in.setVisibility(View.VISIBLE);
+            btn_sign_out.setVisibility(View.INVISIBLE);
+            btn_upload.setVisibility(View.INVISIBLE);
         }
         else {
             text_signIn.setText(String.format(getResources().getString(R.string.hello), account.getDisplayName()));
+            btn_sign_in.setVisibility(View.INVISIBLE);
             connectToDrive(account);
         }
 
@@ -71,7 +89,7 @@ public class SignInActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         NavigationView mNavigationView = findViewById(R.id.nav_menu);
         mNavigationView.setNavigationItemSelectedListener(menuItem -> {
@@ -95,11 +113,6 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void requestSignIn() {
-        GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .requestScopes(new Scope(DriveScopes.DRIVE_FILE))
-                .build();
-
         GoogleSignInClient client = GoogleSignIn.getClient(this, signInOptions);
         signInResultLauncher.launch(client.getSignInIntent());
     }
@@ -140,6 +153,19 @@ public class SignInActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(), "Folder could not be created", Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    private void signOut() {
+        GoogleSignInClient client = GoogleSignIn.getClient(this, signInOptions);
+        client.signOut().addOnCompleteListener(this, task -> {
+            Toast.makeText(getApplicationContext(), "Logged out", Toast.LENGTH_SHORT).show();
+            text_signIn.setText(String.format(getResources().getString(R.string.hello), "please sign in"));
+
+            btn_sign_in.setVisibility(View.VISIBLE);
+            btn_sign_out.setVisibility(View.INVISIBLE);
+            btn_upload.setVisibility(View.INVISIBLE);
+        });
+
     }
 
     private void connectToDrive(GoogleSignInAccount googleSignInAccount) {
