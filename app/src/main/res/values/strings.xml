@@ -65,4 +65,7 @@
     <string name="Note">Note</string>
     <string name="sign_out">Sign out</string>
     <string name="database">Database</string>
+    <string name="_90_day">90 day</string>
+    <string name="_30_day">30 day</string>
+    <string name="_7_day">7 day</string>
 </resources>

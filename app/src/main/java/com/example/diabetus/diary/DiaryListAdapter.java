@@ -8,12 +8,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.diabetus.R;
 import com.example.diabetus.RecyclerViewClickListener;
 
 import java.util.List;
+import java.util.Locale;
 
 public class DiaryListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -123,16 +125,17 @@ public class DiaryListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         public void bind(final DiaryEntry entry) {
-            diary_header.setText(entry.getStringTime() + ", " + entry.getCategory());
-            diary_bs.setText(String.format("%.1f", entry.getBs()));
-            diary_cal.setText(String.format("%.1f", entry.getMeal().getCalorie()));
-            diary_carb.setText(String.format("%.1f", entry.getMeal().getCarb()));
-            diary_protein.setText(String.format("%.1f", entry.getMeal().getProtein()));
-            diary_fat.setText(String.format("%.1f", entry.getMeal().getFat()));
+            String header = entry.getStringTime() + ", " + entry.getCategory();
+            diary_header.setText(header);
+            diary_bs.setText(String.format(Locale.getDefault(),"%.1f", entry.getBs()));
+            diary_cal.setText(String.format(Locale.getDefault(),"%.1f", entry.getMeal().getCalorie()));
+            diary_carb.setText(String.format(Locale.getDefault(),"%.1f", entry.getMeal().getCarb()));
+            diary_protein.setText(String.format(Locale.getDefault(),"%.1f", entry.getMeal().getProtein()));
+            diary_fat.setText(String.format(Locale.getDefault(),"%.1f", entry.getMeal().getFat()));
             diary_rapidInsulin.setText(String.valueOf(entry.getRapid_insulin()));
             diary_basalInsulin.setText(String.valueOf(entry.getBasal_insulin()));
             diary_meal.setText(entry.getMeal().getContent());
-            diary_weight.setText(String.format("%.1f", entry.getWeight()));
+            diary_weight.setText(String.format(Locale.getDefault(),"%.1f", entry.getWeight()));
 
             if (entry.getBs() == 0) {
                 diary_bs.setVisibility(View.GONE);
@@ -141,15 +144,15 @@ public class DiaryListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 diary_bs.setVisibility(View.VISIBLE);
 
                 if (entry.getBs() > 10.0) {
-                    diary_bs.setBackgroundColor(context.getResources().getColor(R.color.red));
+                    diary_bs.setBackgroundColor(ContextCompat.getColor(context, R.color.red));
                 } else if (entry.getBs() > 6.0) {
-                    diary_bs.setBackgroundColor(context.getResources().getColor(R.color.orange));
+                    diary_bs.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
                 } else if (entry.getBs() < 3.0) {
-                    diary_bs.setBackgroundColor(context.getResources().getColor(R.color.purple_500));
+                    diary_bs.setBackgroundColor(ContextCompat.getColor(context, R.color.purple_500));
                 } else if (entry.getBs() < 4.0) {
-                    diary_bs.setBackgroundColor(context.getResources().getColor(R.color.purple_200));
+                    diary_bs.setBackgroundColor(ContextCompat.getColor(context, R.color.purple_200));
                 } else {
-                    diary_bs.setBackgroundColor(context.getResources().getColor(R.color.green));
+                    diary_bs.setBackgroundColor(ContextCompat.getColor(context, R.color.green));
                 }
             }
 
