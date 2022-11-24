@@ -11,6 +11,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.diabetus.UI.PieChart;
 import com.example.diabetus.database.DbHelper;
@@ -21,7 +22,6 @@ import com.example.diabetus.diary.DiaryEntry;
 import com.example.diabetus.food.FoodActivity;
 import com.google.android.material.navigation.NavigationView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private final MutableLiveData<List<DiaryEntry>> Entries = new MutableLiveData<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +72,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        showAverages();
-        showTodayStatistics();
+        Entries.observe(this, diaryEntries -> {
+            diaryEntries.sort((o1, o2) -> o1.getDate().compareTo(o2.getDate()) * -1);
+            showAverages(diaryEntries);
+            showMacroStatistics(diaryEntries);
+        });
+        getLast90Days();
     }
 
     @Override
@@ -99,13 +104,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void showAverages () {
-        DbHelper dbh = new DbHelper(this, null, 1);
-        List<DiaryEntry> list = dbh.getDiaryEntryWhere(" " +
-                "WHERE " + DiaryDbHelper.COLUMN_DIARY_BLOODSUGAR + " IS NOT 0 AND " +
-                "substr(REPLACE( + " + DiaryDbHelper.COLUMN_DIARY_TIMEDATE + ",'.','-'),1,11)" +
-                "BETWEEN date('now','localtime','-90 days') AND date('now','localtime')");
-
+    public void showAverages (List<DiaryEntry> list) {
         int[] time = {7, 30, 90};
         int[] chart = {R.id.PieChart_7day, R.id.PieChart_30day, R.id.PieChart_90day};
         int[] normal = {0, 0, 0};
@@ -113,37 +112,40 @@ public class MainActivity extends AppCompatActivity {
         int[] high = {0, 0, 0};
         int[] too_high = {0, 0, 0};
         int[] too_low = {0, 0, 0};
-        float[] average = {0, 0, 0};
+        double[] average = {0, 0, 0};
+
         Date currentDate = Calendar.getInstance().getTime();
 
         for (DiaryEntry entry : list) {
-            long daysDiff = TimeUnit.DAYS.convert( currentDate.getTime() - entry.getDate().getTime(), TimeUnit.MILLISECONDS);
-            int chartIndex;
+            if (entry.getBs() != 0) {
+                long daysDiff = TimeUnit.DAYS.convert(currentDate.getTime() - entry.getDate().getTime(), TimeUnit.MILLISECONDS);
+                int chartIndex;
 
-            if (daysDiff < time[0]) {
-                //7 days
-                chartIndex = 0;
-            } else if (daysDiff < time[1]) {
-                //30 days
-                chartIndex = 1;
-            } else {
-                //90 days
-                chartIndex = 2;
+                if (daysDiff < time[0]) {
+                    //7 days
+                    chartIndex = 0;
+                } else if (daysDiff < time[1]) {
+                    //30 days
+                    chartIndex = 1;
+                } else {
+                    //90 days
+                    chartIndex = 2;
+                }
+
+                if (entry.getBs() >= 10) {
+                    too_high[chartIndex]++;
+                } else if (entry.getBs() >= 6) {
+                    high[chartIndex]++;
+                } else if (entry.getBs() < 3) {
+                    too_low[chartIndex]++;
+                } else if (entry.getBs() < 4) {
+                    low[chartIndex]++;
+                } else {
+                    normal[chartIndex]++;
+                }
+
+                average[chartIndex] += entry.getBs();
             }
-
-            if (entry.getBs() >= 10) {
-                too_high[chartIndex]++;
-            } else if (entry.getBs() >= 6) {
-                high[chartIndex]++;
-            } else if (entry.getBs() < 3) {
-                too_low[chartIndex]++;
-            } else if (entry.getBs() < 4) {
-                low[chartIndex]++;
-            } else {
-                normal[chartIndex]++;
-            }
-
-            average[chartIndex] += entry.getBs();
         }
 
         too_low[1] += too_low[0];
@@ -182,15 +184,85 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void showTodayStatistics () {
-        DbHelper dbh = new DbHelper(this, null, 1);
-        SimpleDateFormat dateF = new SimpleDateFormat("yyyy.MM.dd",Locale.getDefault());
+    private void showMacroStatistics (List<DiaryEntry> list) {
+        double cal = 0.0;
+        double carb = 0.0;
+        double protein = 0.0;
+        double fat = 0.0;
+        double fiber = 0.0;
+        int[] time = {0, 7, 30, 90};
+        boolean[] set = {false, false, false, false};
 
-        List<DiaryEntry> list = dbh.getDiaryEntryWhere(" WHERE " + DiaryDbHelper.COLUMN_DIARY_TIMEDATE + " LIKE \"%" + dateF.format(new Date()) + "%\"");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set( Calendar.HOUR_OF_DAY, 23 );
+        calendar.set( Calendar.MINUTE, 59 );
+        calendar.set( Calendar.SECOND, 59 );
+        Date currentDate = calendar.getTime();
 
         if (list.size() > 0) {
-            double cal = 0.0, carb = 0.0, protein = 0.0, fat = 0.0, fiber = 0.0;
             for (DiaryEntry entry : list) {
+                long daysDiff = TimeUnit.DAYS.convert( currentDate.getTime() - entry.getDate().getTime(), TimeUnit.MILLISECONDS);
+
+                if ((daysDiff > time[0]) && !set[0]) {
+                    //today
+                    set[0] = true;
+                    TextView et_main_cal = findViewById(R.id.et_main_cal_today);
+                    et_main_cal.setText(String.format(Locale.getDefault(), "%.1f", cal));
+                    TextView et_main_carb = findViewById(R.id.et_main_carb_today);
+                    et_main_carb.setText(String.format(Locale.getDefault(), "%.1f", carb));
+                    TextView et_main_prot = findViewById(R.id.et_main_prot_today);
+                    et_main_prot.setText(String.format(Locale.getDefault(), "%.1f", protein));
+                    TextView et_main_fat = findViewById(R.id.et_main_fat_today);
+                    et_main_fat.setText(String.format(Locale.getDefault(), "%.1f", fat));
+                    TextView et_main_fiber = findViewById(R.id.et_main_fiber_today);
+                    et_main_fiber.setText(String.format(Locale.getDefault(), "%.1f", fiber));
+                }
+
+                if ((daysDiff > time[1]) && !set[1]) {
+                    //7 day
+                    set[1] = true;
+                    TextView et_main_cal = findViewById(R.id.et_main_cal_7day);
+                    et_main_cal.setText(String.format(Locale.getDefault(), "%.1f", cal/time[1]));
+                    TextView et_main_carb = findViewById(R.id.et_main_carb_7day);
+                    et_main_carb.setText(String.format(Locale.getDefault(), "%.1f", carb/time[1]));
+                    TextView et_main_prot = findViewById(R.id.et_main_prot_7day);
+                    et_main_prot.setText(String.format(Locale.getDefault(), "%.1f", protein/time[1]));
+                    TextView et_main_fat = findViewById(R.id.et_main_fat_7day);
+                    et_main_fat.setText(String.format(Locale.getDefault(), "%.1f", fat/time[1]));
+                    TextView et_main_fiber = findViewById(R.id.et_main_fiber_7day);
+                    et_main_fiber.setText(String.format(Locale.getDefault(), "%.1f", fiber/time[1]));
+                }
+
+                if ((daysDiff > time[2]) && !set[2]) {
+                    //30 day
+                    set[2] = true;
+                    TextView et_main_cal = findViewById(R.id.et_main_cal_30day);
+                    et_main_cal.setText(String.format(Locale.getDefault(), "%.1f", cal/time[2]));
+                    TextView et_main_carb = findViewById(R.id.et_main_carb_30day);
+                    et_main_carb.setText(String.format(Locale.getDefault(), "%.1f", carb/time[2]));
+                    TextView et_main_prot = findViewById(R.id.et_main_prot_30day);
+                    et_main_prot.setText(String.format(Locale.getDefault(), "%.1f", protein/time[2]));
+                    TextView et_main_fat = findViewById(R.id.et_main_fat_30day);
+                    et_main_fat.setText(String.format(Locale.getDefault(), "%.1f", fat/time[2]));
+                    TextView et_main_fiber = findViewById(R.id.et_main_fiber_30day);
+                    et_main_fiber.setText(String.format(Locale.getDefault(), "%.1f", fiber/time[2]));
+                }
+
+                if ((daysDiff > time[3]) && !set[3]) {
+                    //90 day
+                    set[3] = true;
+                    TextView et_main_cal = findViewById(R.id.et_main_cal_90day);
+                    et_main_cal.setText(String.format(Locale.getDefault(), "%.1f", cal/time[3]));
+                    TextView et_main_carb = findViewById(R.id.et_main_carb_90day);
+                    et_main_carb.setText(String.format(Locale.getDefault(), "%.1f", carb/time[3]));
+                    TextView et_main_prot = findViewById(R.id.et_main_prot_90day);
+                    et_main_prot.setText(String.format(Locale.getDefault(), "%.1f", protein/time[3]));
+                    TextView et_main_fat = findViewById(R.id.et_main_fat_90day);
+                    et_main_fat.setText(String.format(Locale.getDefault(), "%.1f", fat/time[3]));
+                    TextView et_main_fiber = findViewById(R.id.et_main_fiber_90day);
+                    et_main_fiber.setText(String.format(Locale.getDefault(), "%.1f", fiber/time[3]));
+                }
+
                 cal += entry.getMeal().getCalorie();
                 carb += entry.getMeal().getCarb();
                 protein += entry.getMeal().getProtein();
@@ -198,16 +270,20 @@ public class MainActivity extends AppCompatActivity {
                 fiber += entry.getMeal().getFiber();
             }
 
-            TextView et_main_cal = findViewById(R.id.et_main_cal);
-            et_main_cal.setText(String.format(Locale.getDefault(), "%.1f", cal));
-            TextView et_main_carb = findViewById(R.id.et_main_carb);
-            et_main_carb.setText(String.format(Locale.getDefault(), "%.1f", carb));
-            TextView et_main_prot = findViewById(R.id.et_main_prot);
-            et_main_prot.setText(String.format(Locale.getDefault(), "%.1f", protein));
-            TextView et_main_fat = findViewById(R.id.et_main_fat);
-            et_main_fat.setText(String.format(Locale.getDefault(), "%.1f", fat));
-            TextView et_main_fiber = findViewById(R.id.et_main_fiber);
-            et_main_fiber.setText(String.format(Locale.getDefault(), "%.1f", fiber));
         }
+    }
+
+    private void getLast90Days()
+    {
+        Runnable runnable = () -> {
+            DbHelper dbh = new DbHelper(getBaseContext(), null, 1);
+            Entries.postValue(dbh.getDiaryEntryWhere(" " +
+                    "WHERE " +
+                    "substr(REPLACE( + " + DiaryDbHelper.COLUMN_DIARY_TIMEDATE + ",'.','-'),1,10)" +
+                    "BETWEEN date('now','localtime','-90 days') AND date('now','localtime')"));
+        };
+
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 }

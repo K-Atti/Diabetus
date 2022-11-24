@@ -117,74 +117,91 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Empty" />
 
                 <TextView
                     android:id="@+id/text_main_cal"
                     style="@style/MyTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="74dp"
                     android:layout_height="wrap_content"
                     android:text="@string/Calorie" />
 
                 <TextView
-                    android:id="@+id/et_main_cal"
-                    style="@style/MyTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/DefaultDecimal" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
                     android:id="@+id/text_main_carb"
                     style="@style/MyTextView"
-                    android:layout_width="78dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:text="@string/carb" />
 
                 <TextView
-                    android:id="@+id/et_main_carb"
-                    style="@style/MyTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/DefaultDecimal" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
                     android:id="@+id/text_main_prot"
                     style="@style/MyTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:text="@string/protein" />
 
                 <TextView
-                    android:id="@+id/et_main_prot"
-                    style="@style/MyTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/DefaultDecimal" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
                     android:id="@+id/text_main_fat"
                     style="@style/MyTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="42dp"
                     android:layout_height="wrap_content"
                     android:text="@string/fat" />
 
                 <TextView
-                    android:id="@+id/et_main_fat"
+                    android:id="@+id/text_main_fiber"
+                    style="@style/MyTextView"
+                    android:layout_width="58dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fiber" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/today" />
+
+                <TextView
+                    android:id="@+id/et_main_cal_today"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_carb_today"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_prot_today"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fat_today"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fiber_today"
                     style="@style/MyTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -196,14 +213,136 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/text_main_fiber"
+                    android:id="@+id/textView4"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/_7_day" />
+
+                <TextView
+                    android:id="@+id/et_main_cal_7day"
                     style="@style/MyTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/fiber" />
+                    android:text="@string/DefaultDecimal" />
 
                 <TextView
-                    android:id="@+id/et_main_fiber"
+                    android:id="@+id/et_main_carb_7day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_prot_7day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fat_7day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fiber_7day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_30_day" />
+
+                <TextView
+                    android:id="@+id/et_main_cal_30day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_carb_30day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_prot_30day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fat_30day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fiber_30day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_90_day" />
+
+                <TextView
+                    android:id="@+id/et_main_cal_90day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_carb_90day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_prot_90day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fat_90day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fiber_90day"
                     style="@style/MyTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

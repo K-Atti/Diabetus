@@ -66,6 +66,7 @@ public class PieChart extends View {
         }
 
         mText = text;
+        invalidate();
     }
 
     public void onDraw(Canvas canvas) {

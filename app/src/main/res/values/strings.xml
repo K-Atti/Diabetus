@@ -68,4 +68,5 @@
     <string name="_90_day">90 day</string>
     <string name="_30_day">30 day</string>
     <string name="_7_day">7 day</string>
+    <string name="today">Today</string>
 </resources>
