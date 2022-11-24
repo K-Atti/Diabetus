@@ -1,6 +1,10 @@
 <resources>
-    <declare-styleable name="FullscreenAttrs">
-        <attr name="fullscreenBackgroundColor" format="color" />
-        <attr name="fullscreenTextColor" format="color" />
+    <declare-styleable name="PieChart">
+        <attr name="Text" format="string" />
+        <attr name="TextColor" format="color" />
+        <attr name="TextSize" format="integer" />
+        <attr name="InnerColor" format="color" />
+        <attr name="Width" format="integer" />
+        <attr name="Radius" format="integer" />
     </declare-styleable>
 </resources>

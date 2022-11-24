@@ -12,116 +12,75 @@
         android:layout_height="match_parent"
         android:background="@color/black">
 
+
         <TextView
-            android:id="@+id/text_main_cal"
-            style="@style/MyTextView"
+            android:id="@+id/text_7day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Calorie"
-            app:layout_constraintEnd_toStartOf="@+id/et_main_cal"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
+            android:text="@string/_7_day"
+            app:layout_constraintBottom_toTopOf="@+id/PieChart_7day"
+            app:layout_constraintEnd_toEndOf="@+id/PieChart_7day"
+            app:layout_constraintStart_toStartOf="@+id/PieChart_7day" />
+
+        <com.example.diabetus.UI.PieChart xmlns:pieChart="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/PieChart_7day"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_Diary"
+            app:layout_constraintEnd_toStartOf="@id/PieChart_30day"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            pieChart:InnerColor="@color/black"
+            pieChart:Radius="150"
+            pieChart:Text="0.0"
+            pieChart:TextColor="@color/white"
+            pieChart:Width="40" />
 
         <TextView
-            android:id="@+id/et_main_cal"
-            style="@style/MyTextView"
+            android:id="@+id/text_30day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/DefaultDecimal"
-            app:layout_constraintEnd_toStartOf="@+id/text_main_carb"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_main_cal"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/_30_day"
+            app:layout_constraintBottom_toTopOf="@+id/PieChart_30day"
+            app:layout_constraintEnd_toEndOf="@+id/PieChart_30day"
+            app:layout_constraintStart_toStartOf="@+id/PieChart_30day" />
+
+        <com.example.diabetus.UI.PieChart xmlns:pieChart="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/PieChart_30day"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_Diary"
+            app:layout_constraintEnd_toStartOf="@id/PieChart_90day"
+            app:layout_constraintStart_toEndOf="@id/PieChart_7day"
+            app:layout_constraintTop_toTopOf="parent"
+            pieChart:InnerColor="@color/black"
+            pieChart:Radius="150"
+            pieChart:Text="0.0"
+            pieChart:TextColor="@color/white"
+            pieChart:Width="40" />
 
         <TextView
-            android:id="@+id/text_main_carb"
-            style="@style/MyTextView"
+            android:id="@+id/text_90day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/carb"
-            app:layout_constraintEnd_toStartOf="@+id/et_main_carb"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/et_main_cal"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/_90_day"
+            app:layout_constraintBottom_toTopOf="@+id/PieChart_90day"
+            app:layout_constraintEnd_toEndOf="@+id/PieChart_90day"
+            app:layout_constraintStart_toStartOf="@+id/PieChart_90day" />
 
-        <TextView
-            android:id="@+id/et_main_carb"
-            style="@style/MyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/carb"
-            app:layout_constraintEnd_toStartOf="@+id/text_main_prot"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_main_carb"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/text_main_prot"
-            style="@style/MyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/protein"
-            app:layout_constraintEnd_toStartOf="@+id/et_main_prot"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/et_main_carb"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/et_main_prot"
-            style="@style/MyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/DefaultDecimal"
-            app:layout_constraintEnd_toStartOf="@+id/text_main_fat"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_main_prot"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/text_main_fat"
-            style="@style/MyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fat"
-            app:layout_constraintEnd_toStartOf="@+id/et_main_fat"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/et_main_prot"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/et_main_fat"
-            style="@style/MyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/DefaultDecimal"
-            app:layout_constraintEnd_toStartOf="@+id/text_main_fiber"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_main_fat"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/text_main_fiber"
-            style="@style/MyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fiber"
-            app:layout_constraintEnd_toStartOf="@+id/et_main_fiber"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/et_main_fat"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/et_main_fiber"
-            style="@style/MyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/DefaultDecimal"
-            app:layout_constraintEnd_toStartOf="@+id/text_main_cal"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_main_fiber"
-            app:layout_constraintTop_toTopOf="parent" />
+        <com.example.diabetus.UI.PieChart xmlns:pieChart="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/PieChart_90day"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_Diary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/PieChart_30day"
+            app:layout_constraintTop_toTopOf="parent"
+            pieChart:InnerColor="@color/black"
+            pieChart:Radius="150"
+            pieChart:Text="0.0"
+            pieChart:TextColor="@color/white"
+            pieChart:Width="40" />
 
         <Button
             android:id="@+id/btn_Diary"
@@ -145,6 +104,251 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_Diary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TableLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_Food">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Empty" />
+
+                <TextView
+                    android:id="@+id/text_main_cal"
+                    style="@style/MyTextView"
+                    android:layout_width="74dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Calorie" />
+
+                <TextView
+                    android:id="@+id/text_main_carb"
+                    style="@style/MyTextView"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/carb" />
+
+                <TextView
+                    android:id="@+id/text_main_prot"
+                    style="@style/MyTextView"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/protein" />
+
+                <TextView
+                    android:id="@+id/text_main_fat"
+                    style="@style/MyTextView"
+                    android:layout_width="42dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fat" />
+
+                <TextView
+                    android:id="@+id/text_main_fiber"
+                    style="@style/MyTextView"
+                    android:layout_width="58dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fiber" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/today" />
+
+                <TextView
+                    android:id="@+id/et_main_cal_today"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_carb_today"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_prot_today"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fat_today"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fiber_today"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/_7_day" />
+
+                <TextView
+                    android:id="@+id/et_main_cal_7day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_carb_7day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_prot_7day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fat_7day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fiber_7day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_30_day" />
+
+                <TextView
+                    android:id="@+id/et_main_cal_30day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_carb_30day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_prot_30day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fat_30day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fiber_30day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_90_day" />
+
+                <TextView
+                    android:id="@+id/et_main_cal_90day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_carb_90day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_prot_90day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fat_90day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+
+                <TextView
+                    android:id="@+id/et_main_fiber_90day"
+                    style="@style/MyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DefaultDecimal" />
+            </TableRow>
+        </TableLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
