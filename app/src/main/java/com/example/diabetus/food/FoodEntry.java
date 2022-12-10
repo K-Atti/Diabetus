@@ -3,6 +3,10 @@ package com.example.diabetus.food;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
+import com.example.diabetus.usda.UsdaData;
+
 public class FoodEntry implements Parcelable, Eatable {
     private String name;
     private String brand;
@@ -47,6 +51,7 @@ public class FoodEntry implements Parcelable, Eatable {
         this.weight = 0;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "FoodEntry{" +
@@ -65,10 +70,19 @@ public class FoodEntry implements Parcelable, Eatable {
                 '}';
     }
 
-    //getters and setters
-    public FoodEntry(String name, String brand) {
-        this.name = name;
-        this.brand = brand;
+    public FoodEntry(UsdaData usda) {
+        name = usda.getDescription();
+        brand = "";
+        calorie = usda.getCalorie();
+        trans_fat = usda.getTransFat();
+        saturated_fat = usda.getSaturatedFat();
+        unsaturated_fat = usda.getUnSaturatedFat();
+        carb = usda.getCarb();
+        sugar = usda.getSugar();
+        fiber = usda.getFiber();
+        protein = usda.getProtein();
+        weight = usda.getServingSize();
+        sodium = 0;
     }
 
     private FoodEntry(Parcel in) {
