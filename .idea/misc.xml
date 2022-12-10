@@ -3,10 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/Diabetus/app/src/main/res/drawable/ic_search.xml" value="0.1595" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/activity_entry.xml" value="0.18802083333333333" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/activity_food.xml" value="0.18802083333333333" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/activity_main.xml" value="0.2527646129541864" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/diary_row.xml" value="0.5" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/layout/fragment_foodeditor.xml" value="0.25" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/layout/fragment_meal.xml" value="0.3819628647214854" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/menu/diarylist.xml" value="0.15" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/menu/foodeditor.xml" value="0.15" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/menu/foodentry.xml" value="0.15" />
       </map>
     </option>
   </component>

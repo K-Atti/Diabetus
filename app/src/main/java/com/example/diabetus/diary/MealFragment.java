@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,9 @@ import com.example.diabetus.food.Food;
 import com.example.diabetus.food.FoodEntry;
 import com.example.diabetus.food.FoodListAdapter;
 import com.example.diabetus.food.Meal;
+import com.example.diabetus.usda.USDAApi;
+import com.example.diabetus.usda.UsdaData;
+import com.example.diabetus.usda.UsdaSearchResult;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -42,6 +46,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MealFragment extends Fragment implements RecyclerViewClickListener {
 
@@ -129,6 +137,9 @@ public class MealFragment extends Fragment implements RecyclerViewClickListener 
         btn_SelectedFood = view.findViewById(R.id.btn_SelectedFood);
         btn_SelectedFood.setText(Entry.getMeal().getMacros());
         btn_SelectedFood.setOnClickListener(v -> createFoodListPopup());
+
+        ImageButton btn_SearchOnline = view.findViewById(R.id.btn_search_online);
+        btn_SearchOnline.setOnClickListener(v -> getFoodOnline(et_search.getText().toString()));
 
         MenuHost menuHost = requireActivity();
         menuHost.addMenuProvider(new MenuProvider() {
@@ -317,7 +328,7 @@ public class MealFragment extends Fragment implements RecyclerViewClickListener 
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            et_Quantity.setText(String.format("%.2f", quantity));
+            et_Quantity.setText(String.format(Locale.getDefault(), "%.2f", quantity));
         });
 
         btn_Quantity1.setOnClickListener(view1 -> {
@@ -328,7 +339,7 @@ public class MealFragment extends Fragment implements RecyclerViewClickListener 
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            et_Quantity.setText(String.format("%.2f", quantity));
+            et_Quantity.setText(String.format(Locale.getDefault(), "%.2f", quantity));
         });
 
         btn_Quantity2.setOnClickListener(view1 -> {
@@ -339,7 +350,7 @@ public class MealFragment extends Fragment implements RecyclerViewClickListener 
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            et_Quantity.setText(String.format("%.2f", quantity));
+            et_Quantity.setText(String.format(Locale.getDefault(), "%.2f", quantity));
         });
 
         btn_Quantity3.setOnClickListener(view1 -> {
@@ -350,7 +361,7 @@ public class MealFragment extends Fragment implements RecyclerViewClickListener 
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            et_Quantity.setText(String.format("%.2f", quantity));
+            et_Quantity.setText(String.format(Locale.getDefault(), "%.2f", quantity));
         });
 
         btn_Quantity4.setOnClickListener(view1 -> {
@@ -361,7 +372,7 @@ public class MealFragment extends Fragment implements RecyclerViewClickListener 
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            et_Quantity.setText(String.format("%.2f", quantity));
+            et_Quantity.setText(String.format(Locale.getDefault(), "%.2f", quantity));
         });
 
         btn_Quantity5.setOnClickListener(view1 -> {
@@ -372,7 +383,7 @@ public class MealFragment extends Fragment implements RecyclerViewClickListener 
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            et_Quantity.setText(String.format("%.2f", quantity));
+            et_Quantity.setText(String.format(Locale.getDefault(), "%.2f", quantity));
         });
 
         btn_Quantity6.setOnClickListener(view1 -> {
@@ -383,7 +394,7 @@ public class MealFragment extends Fragment implements RecyclerViewClickListener 
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            et_Quantity.setText(String.format("%.2f", quantity));
+            et_Quantity.setText(String.format(Locale.getDefault(), "%.2f", quantity));
         });
 
         btn_Quantity7.setOnClickListener(view1 -> {
@@ -394,7 +405,7 @@ public class MealFragment extends Fragment implements RecyclerViewClickListener 
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            et_Quantity.setText(String.format("%.2f", quantity));
+            et_Quantity.setText(String.format(Locale.getDefault(), "%.2f", quantity));
         });
 
         switch_Quantity.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -435,5 +446,43 @@ public class MealFragment extends Fragment implements RecyclerViewClickListener 
             }
         }
         EatableListAdapter.Update((List<? extends Eatable>)(Object)filteredList);
+    }
+
+    private void getFoodOnline(String text) {
+        USDAApi api = new USDAApi();
+
+        api.getFoodList(text, new Callback<UsdaSearchResult>() {
+            @Override
+            public void onResponse(Call<UsdaSearchResult> call, Response<UsdaSearchResult> response) {
+                if (response.isSuccessful()) {
+                    List<UsdaData> data = response.body().getFoods();
+                    List<FoodEntry> tmpFoodList = new ArrayList<>();
+                    List<Meal> tmpMealList = new ArrayList<>();
+
+                    for (Eatable item : full_eatable_list) {
+                        if (item.getPresentableName().toLowerCase().contains(text.toLowerCase())) {
+                            if (item.getType() == Eatable.EATABLE_FOODENTRY) {
+                                tmpFoodList.add((FoodEntry) item);
+                            } else {
+                                tmpMealList.add((Meal) item);
+                            }
+                        }
+                    }
+                    for(UsdaData item : data) {
+                        FoodEntry entry = new FoodEntry(item);
+                        tmpFoodList.add(entry);
+                    }
+                    List<Object> tmp = new ArrayList<>();
+                    tmp.addAll(tmpFoodList);
+                    tmp.addAll(tmpMealList);
+                    EatableListAdapter.Update((List<? extends Eatable>)(Object)tmp);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UsdaSearchResult> call, Throwable t) {
+
+            }
+        });
     }
 }

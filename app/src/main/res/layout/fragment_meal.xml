@@ -25,11 +25,24 @@
         android:id="@+id/et_Search"
         style="@style/MyEditTextView"
         android:layout_marginTop="16dp"
-        android:hint="Search"
+        android:hint="@string/search"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_search_online"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_SelectedFood" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_SelectedFood"
+        android:importantForAutofill="no" />
+
+    <ImageButton
+        android:id="@+id/btn_search_online"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:background="@null"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="@+id/et_Search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_Search"
+        app:layout_constraintTop_toTopOf="@+id/et_Search"
+        android:contentDescription="@string/search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_Eatable"
@@ -59,5 +72,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textMealName"
         app:layout_constraintTop_toTopOf="@+id/textMealName"
-        app:layout_constraintBottom_toBottomOf="@+id/textMealName"/>
+        app:layout_constraintBottom_toBottomOf="@+id/textMealName"
+        android:importantForAutofill="no"
+        android:inputType="text" />
 </androidx.constraintlayout.widget.ConstraintLayout>
