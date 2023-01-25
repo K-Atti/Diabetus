@@ -143,6 +143,26 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/btn_dialog" />
 
+        <ImageButton
+            android:id="@+id/ibtn_InspectFood"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/eatable_Fat"
+            app:layout_constraintEnd_toStartOf="@+id/ibtn_DeleteFood"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+
+        <ImageButton
+            android:id="@+id/ibtn_AddToDatabase"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/eatable_Fat"
+            app:layout_constraintEnd_toStartOf="@+id/ibtn_InspectFood"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
         <TextView
             android:id="@+id/eatable_Quantity"
             android:layout_width="wrap_content"

@@ -8,15 +8,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.diabetus.diary.DiaryEntry;
-import com.example.diabetus.food.FoodEntry;
-import com.example.diabetus.food.Meal;
+import com.example.diabetus.database.diary.DiaryEntry;
+import com.example.diabetus.database.food.FoodEntry;
+import com.example.diabetus.database.food.Meal;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DiaryDbHelper extends SQLiteOpenHelper {
 
@@ -147,7 +148,7 @@ public class DiaryDbHelper extends SQLiteOpenHelper {
         Date entryDate;
         try {
             String debug = cursor.getString(1);
-            entryDate = new SimpleDateFormat("yyyy.MM.dd HH:mm").parse(debug);
+            entryDate = new SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.getDefault()).parse(debug);
         }
         catch (ParseException e)
         {

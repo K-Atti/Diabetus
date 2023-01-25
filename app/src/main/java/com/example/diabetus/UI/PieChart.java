@@ -91,7 +91,4 @@ public class PieChart extends View {
         mPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
         canvas.drawText(mText, (float)getWidth()/2, (float)getHeight()/2 - ((mPaint.descent() + mPaint.ascent()) / 2), mPaint);
     }
-
-
-
 }

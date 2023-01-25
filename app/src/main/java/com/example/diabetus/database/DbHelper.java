@@ -5,10 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
-import com.example.diabetus.diary.DiaryEntry;
-import com.example.diabetus.food.Eatable;
-import com.example.diabetus.food.FoodEntry;
-import com.example.diabetus.food.Meal;
+import com.example.diabetus.database.diary.DiaryEntry;
+import com.example.diabetus.database.food.Eatable;
+import com.example.diabetus.database.food.FoodEntry;
+import com.example.diabetus.database.food.Meal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +60,13 @@ public class DbHelper {
 
     public void deleteFoodEntry(FoodEntry entry) {
         fdbh.deleteEntry(entry);
+    }
+
+    public List<DiaryEntry> getLast90DaysEntries() {
+        return getDiaryEntryWhere(" " +
+                "WHERE " +
+                "substr(REPLACE( + " + DiaryDbHelper.COLUMN_DIARY_TIMEDATE + ",'.','-'),1,10)" +
+                "BETWEEN date('now','localtime','-90 days') AND date('now','localtime')");
     }
 
     public List<DiaryEntry> getDiaryEntryWhere(String condition) {

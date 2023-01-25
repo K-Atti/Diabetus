@@ -1,5 +1,6 @@
 package com.example.diabetus.database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,8 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.diabetus.food.FoodEntry;
-import com.example.diabetus.food.Meal;
+import com.example.diabetus.database.food.FoodEntry;
+import com.example.diabetus.database.food.Meal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class MealDbHelper extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
+    @SuppressLint("SQLiteString")
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement = "CREATE TABLE " + MEAL_TABLE + "(" +
@@ -56,6 +58,7 @@ public class MealDbHelper extends SQLiteOpenHelper {
             exists = true;
         }
 
+        cursor.close();
         db.close();
 
         db = this.getWritableDatabase();

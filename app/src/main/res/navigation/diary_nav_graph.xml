@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/diaryList_Fragment"
-        android:name="com.example.diabetus.diary.DiaryList_Fragment"
+        android:name="com.example.diabetus.screens.diary.diaryList.DiaryList_Fragment"
         android:label="fragment_diary_list_"
         tools:layout="@layout/fragment_diary_list_" >
         <action
@@ -16,23 +16,37 @@
     </fragment>
     <fragment
         android:id="@+id/entryFragment"
-        android:name="com.example.diabetus.diary.EntryFragment"
+        android:name="com.example.diabetus.screens.diary.diaryEntry.EntryFragment"
         android:label="fragment_entry"
         tools:layout="@layout/fragment_entry" >
         <action
             android:id="@+id/action_entryFragment_to_diaryList_Fragment"
-            app:destination="@id/diaryList_Fragment" />
+            app:destination="@id/diaryList_Fragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/diaryList_Fragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_entryFragment_to_mealFragment"
             app:destination="@id/mealFragment" />
+        <action
+            android:id="@+id/action_dummy"
+            app:destination="@id/diaryList_Fragment"/>
     </fragment>
     <fragment
         android:id="@+id/mealFragment"
-        android:name="com.example.diabetus.diary.MealFragment"
+        android:name="com.example.diabetus.screens.mealEditor.MealFragment"
         android:label="fragment_meal"
         tools:layout="@layout/fragment_meal" >
         <action
             android:id="@+id/action_mealFragment_to_entryFragment"
             app:destination="@id/entryFragment" />
+        <action
+            android:id="@+id/action_mealFragment_to_foodEntry_Fragment"
+            app:destination="@id/foodEntry_Fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/foodEntry_Fragment"
+        android:name="com.example.diabetus.screens.foodEntry.FoodEntry_Fragment"
+        android:label="fragment_foodentry"
+        tools:layout="@layout/fragment_foodentry" />
 </navigation>

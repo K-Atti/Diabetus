@@ -1,5 +1,6 @@
 package com.example.diabetus.database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.diabetus.food.FoodEntry;
+import com.example.diabetus.database.food.FoodEntry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class FoodDbHelper extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
+    @SuppressLint("SQLiteString")
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String createTableStatement = "CREATE TABLE " + FOOD_TABLE + "(" +
@@ -116,19 +118,19 @@ public class FoodDbHelper extends SQLiteOpenHelper {
             do {
                 String name = cursor.getString(0);
                 String brand = cursor.getString(1);
-                Double calorie = cursor.getDouble(2);
-                Double trans_fat = cursor.getDouble(3);
-                Double saturated_fat = cursor.getDouble(4);
-                Double unsaturated_fat = cursor.getDouble(5);
-                Double sodium = cursor.getDouble(6);
-                Double carb = cursor.getDouble(7);
-                Double sugar = cursor.getDouble(8);
-                Double fiber = cursor.getDouble(9);
-                Double protein = cursor.getDouble(10);
-                Double weight = cursor.getDouble(11);
+                double calorie = cursor.getDouble(2);
+                double trans_fat = cursor.getDouble(3);
+                double saturated_fat = cursor.getDouble(4);
+                double unsaturated_fat = cursor.getDouble(5);
+                double sodium = cursor.getDouble(6);
+                double carb = cursor.getDouble(7);
+                double sugar = cursor.getDouble(8);
+                double fiber = cursor.getDouble(9);
+                double protein = cursor.getDouble(10);
+                double weight = cursor.getDouble(11);
 
                 FoodEntry newEntry = new FoodEntry(name, brand, calorie, trans_fat, saturated_fat,
-                        unsaturated_fat, sodium, carb, sugar, fiber, protein, weight);
+                        unsaturated_fat, sodium, carb, sugar, fiber, protein, weight, true);
                 returnList.add(newEntry);
 
             } while (cursor.moveToNext());
@@ -154,19 +156,19 @@ public class FoodDbHelper extends SQLiteOpenHelper {
         cursor = db.rawQuery(queryString, null);
 
         if (cursor.moveToFirst()) {
-            Double calorie = cursor.getDouble(2);
-            Double trans_fat = cursor.getDouble(3);
-            Double saturated_fat = cursor.getDouble(4);
-            Double unsaturated_fat = cursor.getDouble(5);
-            Double sodium = cursor.getDouble(6);
-            Double carb = cursor.getDouble(7);
-            Double sugar = cursor.getDouble(8);
-            Double fiber = cursor.getDouble(9);
-            Double protein = cursor.getDouble(10);
-            Double weight = cursor.getDouble(11);
+            double calorie = cursor.getDouble(2);
+            double trans_fat = cursor.getDouble(3);
+            double saturated_fat = cursor.getDouble(4);
+            double unsaturated_fat = cursor.getDouble(5);
+            double sodium = cursor.getDouble(6);
+            double carb = cursor.getDouble(7);
+            double sugar = cursor.getDouble(8);
+            double fiber = cursor.getDouble(9);
+            double protein = cursor.getDouble(10);
+            double weight = cursor.getDouble(11);
 
             returnValue = new FoodEntry(name, brand, calorie, trans_fat, saturated_fat,
-                    unsaturated_fat, sodium, carb, sugar, fiber, protein, weight);
+                    unsaturated_fat, sodium, carb, sugar, fiber, protein, weight, true);
         }
 
         // clean up

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".food.FoodEditor">
+    tools:context=".screens.foodEntry.FoodEditor">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_Eatable"
@@ -22,10 +22,11 @@
         style="@style/MyEditTextView"
         android:layout_width="0dp"
         android:layout_marginTop="8dp"
-        android:hint="Search"
+        android:hint="@string/search"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

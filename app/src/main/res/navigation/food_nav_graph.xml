@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/foodeditor"
-        android:name="com.example.diabetus.food.FoodEditor"
+        android:name="com.example.diabetus.screens.foodEntry.FoodEditor"
         android:label="fragment_foodeditor"
         tools:layout="@layout/fragment_foodeditor" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodentry"
-        android:name="com.example.diabetus.food.FoodEntry_Fragment"
+        android:name="com.example.diabetus.screens.foodEntry.FoodEntry_Fragment"
         android:label="fragment_foodentry"
         tools:layout="@layout/fragment_foodentry" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/mealFragment"
-        android:name="com.example.diabetus.diary.MealFragment"
+        android:name="com.example.diabetus.screens.mealEditor.MealFragment"
         android:label="fragment_meal"
         tools:layout="@layout/fragment_meal" >
         <action
