@@ -357,8 +357,7 @@ public class EntryFragment extends Fragment {
             Toast.makeText(getActivity(), "Saved", Toast.LENGTH_LONG).show();
             //Switch to diary fragment
             NavHostFragment.findNavController(EntryFragment.this).navigate(R.id.action_entryFragment_to_diaryList_Fragment, outBundle);
-
-//            NavHostFragment.findNavController(EntryFragment.this).popBackStack(R.id.diaryList_Fragment, true);
+            //NavHostFragment.findNavController(EntryFragment.this).popBackStack(R.id.diaryList_Fragment, true);
         }
         else {
             Toast.makeText(getActivity(), "Database error", Toast.LENGTH_LONG).show();

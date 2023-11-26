@@ -64,7 +64,7 @@ public class DiaryList_Fragment extends Fragment implements RecyclerViewClickLis
         if (bundle != null && bundle.containsKey(BUNDLE_RECYCLER_LAYOUT)) {
             Parcelable savedRecyclerLayoutState = bundle.getParcelable(BUNDLE_RECYCLER_LAYOUT);
             if (diaryList.getLayoutManager() != null) {
-                new Handler().postDelayed(() -> diaryList.getLayoutManager().onRestoreInstanceState(savedRecyclerLayoutState), 300);
+                new Handler().postDelayed(() -> diaryList.getLayoutManager().onRestoreInstanceState(savedRecyclerLayoutState), 500);
             }
         }
 

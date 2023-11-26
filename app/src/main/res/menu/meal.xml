@@ -3,13 +3,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menu_addFood"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:icon="@drawable/ic_addmeat"
+        android:iconTint="@color/white"
+        android:title="@string/add_food"
+        app:showAsAction="always"/>
+
+    <item
         android:id="@+id/menu_SaveAsMeal"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:icon="@drawable/ic_addmeal"
         android:iconTint="@color/white"
-        android:title="@string/save_meal"
-        app:showAsAction="ifRoom" />
+        android:title="@string/add_meal"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_DeleteMeal"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:icon="@drawable/ic_baseline_delete_24"
+        android:iconTint="@color/white"
+        android:title="@string/delete_meal"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/menu_SaveMeal"
@@ -18,14 +36,5 @@
         android:icon="@drawable/ic_save_33"
         android:iconTint="@color/white"
         android:title="@string/save"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/menu_DeleteMeal"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:icon="@drawable/ic_baseline_delete_24"
-        android:iconTint="@color/white"
-        android:title="@string/delete"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 </menu>

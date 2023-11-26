@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public interface MainView extends ObservableView<MainView.Listener> {
 
     interface Listener {
-        void onFoodClicked();
         void onDiaryClicked();
     }
 

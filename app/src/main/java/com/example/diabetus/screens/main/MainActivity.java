@@ -12,9 +12,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.diabetus.R;
 import com.example.diabetus.screens.common.ViewMvcFactory;
-import com.example.diabetus.screens.signin.SignInActivity;
 import com.example.diabetus.screens.diary.DiaryActivity;
-import com.example.diabetus.database.food.FoodActivity;
+import com.example.diabetus.screens.signin.SignInActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -47,9 +46,6 @@ public class MainActivity extends AppCompatActivity implements MainView.Listener
             switch (menuItem.getItemId()) {
                 case (R.id.action_diary):
                     goToDiaryActivity();
-                    break;
-                case (R.id.action_food):
-                    goToFoodActivity();
                     break;
                 case (R.id.action_signin):
                     goToSignInActivity(null);
@@ -86,19 +82,9 @@ public class MainActivity extends AppCompatActivity implements MainView.Listener
         startActivity(intent);
     }
 
-    public void goToFoodActivity() {
-        Intent intent = new Intent(this, FoodActivity.class);
-        startActivity(intent);
-    }
-
     public void goToSignInActivity(View view) {
         Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
-    }
-
-
-    public void onFoodClicked() {
-        goToFoodActivity();
     }
 
     public void onDiaryClicked() {

@@ -45,7 +45,7 @@
     <string name="gram">Gram</string>
     <string name="piece">Piece</string>
     <string name="meal">Meal</string>
-    <string name="save_meal">SAVE MEAL</string>
+    <string name="save_meal">Add meal to database</string>
     <string name="button">Button</string>
     <string name="food_editor">Food editor</string>
     <string name="add_meal">Add Meal</string>
@@ -70,4 +70,5 @@
     <string name="_7_day">7 day</string>
     <string name="today">Today</string>
     <string name="search">Search</string>
+    <string name="delete_meal">Delete meal</string>
 </resources>

@@ -35,9 +35,15 @@ public class DiaryActivityModel {
 
     public void refreshDiaryList() {
         new Thread(() -> {
-            List<DiaryEntry> list = dbh.getAllDiaryEntry();
-            Collections.sort(list, Collections.reverseOrder(Comparator.comparing(DiaryEntry::getDate)));
-            diaryList.postValue(groupDataByDate(list));
+            try {
+                List<DiaryEntry> list = dbh.getAllDiaryEntry();
+                Collections.sort(list, Collections.reverseOrder(Comparator.comparing(DiaryEntry::getDate)));
+                diaryList.postValue(groupDataByDate(list));
+            }
+            catch(IllegalStateException e)
+            {
+                //database already closed
+            }
         }).start();
     }
 

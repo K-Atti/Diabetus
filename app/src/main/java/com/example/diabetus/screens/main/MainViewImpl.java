@@ -22,17 +22,8 @@ public class MainViewImpl extends BaseObservableView<MainView.Listener> implemen
                         @Nullable ViewGroup parent) {
         setRootView(layoutInflater.inflate(R.layout.activity_main, parent, false));
 
-        Button btn_Food = findViewById(R.id.btn_Food);
-        btn_Food.setOnClickListener(v -> onFoodClicked());
-
         Button btn_Diary = findViewById(R.id.btn_Diary);
         btn_Diary.setOnClickListener(v -> onDiaryClicked());
-    }
-
-    public void onFoodClicked() {
-        for (Listener listener : getListeners()) {
-            listener.onFoodClicked();
-        }
     }
 
     public void onDiaryClicked() {

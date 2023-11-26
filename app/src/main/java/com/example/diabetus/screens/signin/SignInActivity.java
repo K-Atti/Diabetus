@@ -16,7 +16,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.diabetus.R;
 import com.example.diabetus.screens.common.ViewMvcFactory;
 import com.example.diabetus.screens.diary.DiaryActivity;
-import com.example.diabetus.database.food.FoodActivity;
 import com.example.diabetus.network.google.DriveServiceHelper;
 import com.example.diabetus.screens.main.MainActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -57,6 +56,7 @@ public class SignInActivity extends AppCompatActivity implements SignInView.List
 
         mView = new ViewMvcFactory(getLayoutInflater()).getSignInViewMvc(null);
         mView.registerListener(this);
+        setContentView(mView.getRootView());
 
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
@@ -82,10 +82,6 @@ public class SignInActivity extends AppCompatActivity implements SignInView.List
             switch (menuItem.getItemId()){
                 case(R.id.action_home):
                     intent = new Intent(this, MainActivity.class);
-                    startActivity(intent);
-                    break;
-                case(R.id.action_food):
-                    intent = new Intent(this, FoodActivity.class);
                     startActivity(intent);
                     break;
                 case(R.id.action_diary):

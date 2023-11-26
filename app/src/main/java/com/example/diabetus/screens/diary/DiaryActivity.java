@@ -8,11 +8,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.diabetus.screens.main.MainActivity;
 import com.example.diabetus.R;
-import com.example.diabetus.screens.signin.SignInActivity;
 import com.example.diabetus.databinding.ActivityEntryBinding;
-import com.example.diabetus.database.food.FoodActivity;
+import com.example.diabetus.screens.main.MainActivity;
+import com.example.diabetus.screens.signin.SignInActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
@@ -42,10 +41,6 @@ public class DiaryActivity extends AppCompatActivity {
             switch (menuItem.getItemId()){
                 case(R.id.action_home):
                     intent = new Intent(this, MainActivity.class);
-                    startActivity(intent);
-                    break;
-                case(R.id.action_food):
-                    intent = new Intent(this, FoodActivity.class);
                     startActivity(intent);
                     break;
                 case(R.id.action_signin):

@@ -7,15 +7,22 @@
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/activity_entry.xml" value="0.18802083333333333" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/activity_food.xml" value="0.18802083333333333" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/activity_main.xml" value="0.2527646129541864" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/layout/activity_signin.xml" value="0.15520833333333334" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/layout/content_main.xml" value="0.2515625" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/diary_row.xml" value="0.5" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/eatable_row.xml" value="0.4190871369294606" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/foodlist_popup.xml" value="0.18802083333333333" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/layout/fragment_diary_list_.xml" value="0.2515625" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/fragment_entry.xml" value="0.18802083333333333" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/fragment_foodeditor.xml" value="0.25" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/layout/fragment_foodentry.xml" value="0.2296875" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/layout/fragment_meal.xml" value="0.3819628647214854" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/menu/diaryentry.xml" value="0.18802083333333333" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/menu/diarylist.xml" value="0.15" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/menu/foodeditor.xml" value="0.15" />
         <entry key="..\:/Android/Diabetus/app/src/main/res/menu/foodentry.xml" value="0.15" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/menu/meal.xml" value="0.25" />
+        <entry key="..\:/Android/Diabetus/app/src/main/res/menu/menu_main.xml" value="0.18854166666666666" />
       </map>
     </option>
   </component>

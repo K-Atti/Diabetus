@@ -41,7 +41,6 @@ import com.example.diabetus.database.food.Meal;
 import com.example.diabetus.network.usda.USDAApi;
 import com.example.diabetus.network.usda.UsdaData;
 import com.example.diabetus.network.usda.UsdaSearchResult;
-import com.example.diabetus.screens.foodEntry.FoodEditor;
 import com.example.diabetus.screens.foodEntry.FoodEntry_Fragment;
 
 import java.text.NumberFormat;
@@ -58,9 +57,6 @@ import retrofit2.Response;
 public class MealFragment extends Fragment implements EatableListListener {
 
     public static final String ARG_DIARY_ENTRY = "entry";
-    public static final String ARG_MEAL_ENTRY = "meal";
-
-    private String Caller;
 
     DiaryEntry Entry;
     DbHelper dbh;
@@ -72,6 +68,7 @@ public class MealFragment extends Fragment implements EatableListListener {
     private AlertDialog dialog;
     private Button btn_SelectedFood;
     private Bundle outBundle = new Bundle();
+    private EditText et_search;
 
     final NumberFormat numberFormat = NumberFormat.getInstance(Locale.getDefault());
 
@@ -98,20 +95,10 @@ public class MealFragment extends Fragment implements EatableListListener {
         if (bundle == null) {
             Entry = new DiaryEntry();
             Entry.setMeal(new Meal());
-            Caller = ARG_MEAL_ENTRY;
         }
         else {
             Entry = bundle.getParcelable(ARG_DIARY_ENTRY);
             outBundle = bundle;
-
-            if (Entry == null) {
-                Entry = new DiaryEntry();
-                Entry.setMeal(bundle.getParcelable(ARG_MEAL_ENTRY));
-                et_MealName.setText(Entry.getMeal().getName());
-                Caller = ARG_MEAL_ENTRY;
-            } else {
-                Caller = ARG_DIARY_ENTRY;
-            }
         }
 
         // Initialize layout elements
@@ -123,7 +110,7 @@ public class MealFragment extends Fragment implements EatableListListener {
             eatable_list.setLayoutManager(new LinearLayoutManager(getActivity()));
         }
 
-        EditText et_search = view.findViewById(R.id.et_Search);
+        et_search = view.findViewById(R.id.et_Search);
         et_search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -141,6 +128,23 @@ public class MealFragment extends Fragment implements EatableListListener {
             }
         });
 
+        et_MealName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //Not needed
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //Not needed
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Entry.getMeal().setName(s.toString());
+            }
+        });
+
         btn_SelectedFood = view.findViewById(R.id.btn_SelectedFood);
         btn_SelectedFood.setText(Entry.getMeal().getMacros());
         btn_SelectedFood.setOnClickListener(v -> createFoodListPopup());
@@ -153,14 +157,6 @@ public class MealFragment extends Fragment implements EatableListListener {
             @Override
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
                 menuInflater.inflate(R.menu.meal, menu);
-                MenuItem item;
-                if (Caller.equals(ARG_MEAL_ENTRY)) {
-                    item = menu.findItem(R.id.menu_SaveMeal);
-                }
-                else {
-                    item = menu.findItem(R.id.menu_DeleteMeal);
-                }
-                item.setVisible(false);
             }
 
             @SuppressLint("NonConstantResourceId")
@@ -173,7 +169,7 @@ public class MealFragment extends Fragment implements EatableListListener {
                                 case DialogInterface.BUTTON_POSITIVE:
                                     //Yes button clicked
                                     dbh.deleteMealEntry(Entry.getMeal());
-                                    NavHostFragment.findNavController(MealFragment.this).navigate(R.id.action_mealFragment_to_foodeditor);
+                                    refreshEatableList();
                                     break;
 
                                 case DialogInterface.BUTTON_NEGATIVE:
@@ -189,15 +185,12 @@ public class MealFragment extends Fragment implements EatableListListener {
 
                     case R.id.menu_SaveAsMeal:
                         //Save meal into database and make a toast
-                        String name = et_MealName.getText().toString();
-                        if (!name.isEmpty()) {
-                            Entry.getMeal().setName(name);
+                        if (!Entry.getMeal().getName().isEmpty()) {
                             boolean success = dbh.addMealEntry(Entry.getMeal());
-                            String text = (!success) ? "Database error" : "Meal saved as " + et_MealName.getText().toString();
+                            String text = (!success) ? "Database error" : "Meal saved as " + Entry.getMeal().getName();
                             Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
-                            if (Caller.equals(ARG_MEAL_ENTRY)) {
-                                NavHostFragment.findNavController(MealFragment.this).navigate(R.id.action_mealFragment_to_foodeditor);
-                            }
+                            refreshEatableList();
+
                         }
                         else {
                             Toast.makeText(getActivity(), "No name is given", Toast.LENGTH_SHORT).show();
@@ -208,6 +201,10 @@ public class MealFragment extends Fragment implements EatableListListener {
                         outBundle.putParcelable(ARG_DIARY_ENTRY, Entry);
                         NavHostFragment.findNavController(MealFragment.this).navigate(R.id.action_mealFragment_to_entryFragment, outBundle);
                         break;
+
+                    case R.id.menu_addFood:
+                        NavHostFragment.findNavController(MealFragment.this).navigate(R.id.action_mealFragment_to_foodEntry_Fragment);
+                        break;
                 }
                 return false;
             }
@@ -215,6 +212,11 @@ public class MealFragment extends Fragment implements EatableListListener {
 
         // Inflate the layout for this fragment
         return view;
+    }
+
+    private void refreshEatableList() {
+        full_eatable_list = dbh.getAllEatableEntry();
+        filter(et_search.getText().toString());
     }
 
     public void createFoodListPopup() {

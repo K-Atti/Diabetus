@@ -328,7 +328,7 @@ public class FoodEntry_Fragment extends Fragment {
                                 case DialogInterface.BUTTON_POSITIVE:
                                     //Yes button clicked
                                     dbh.deleteFoodEntry(foodEntry);
-                                    NavHostFragment.findNavController(FoodEntry_Fragment.this).navigate(R.id.action_foodentry_to_foodeditor);
+                                    NavHostFragment.findNavController(FoodEntry_Fragment.this).navigateUp();
                                     break;
 
                                 case DialogInterface.BUTTON_NEGATIVE:
@@ -347,7 +347,7 @@ public class FoodEntry_Fragment extends Fragment {
                         String text = (!success) ? "Database error" : "Food saved as " + foodEntry.getPresentableName();
                         Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
                         if (success) {
-                            NavHostFragment.findNavController(FoodEntry_Fragment.this).navigate(R.id.action_foodentry_to_foodeditor);
+                            NavHostFragment.findNavController(FoodEntry_Fragment.this).navigateUp();
                         }
                         break;
                 }
