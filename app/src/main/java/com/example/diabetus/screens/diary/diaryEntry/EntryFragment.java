@@ -1,6 +1,7 @@
 package com.example.diabetus.screens.diary.diaryEntry;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,6 +37,7 @@ import com.example.diabetus.database.food.Meal;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -75,7 +78,8 @@ enum MyCategories {
 }
 
 public class EntryFragment extends Fragment {
-    private EditText et_Date, et_Time, et_BloodSugar, et_RapidInsulin, et_BasalInsulin, et_Weight;
+    private EditText et_Time, et_BloodSugar, et_RapidInsulin, et_BasalInsulin, et_Weight;
+    private Button btn_Date;
     private DiaryEntry entry;
     private Bundle outBundle = new Bundle();
 
@@ -94,7 +98,7 @@ public class EntryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_entry, container, false);
 
-        et_Date = view.findViewById(R.id.et_Date);
+        btn_Date = view.findViewById(R.id.btn_Date);
         et_Time = view.findViewById(R.id.et_Time);
         et_BloodSugar = view.findViewById(R.id.et_BloodSugar);
         et_RapidInsulin = view.findViewById(R.id.et_RI);
@@ -217,31 +221,30 @@ public class EntryFragment extends Fragment {
 
         SimpleDateFormat dateF = new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault());
         String date = dateF.format(entry.getDate());
-        et_Date.setText(date);
-        et_Date.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        btn_Date.setText(date);
+        btn_Date.setOnClickListener(v -> {
+            final Calendar calendar = Calendar.getInstance();
 
-            }
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                et_Date.setTextColor(Color.WHITE);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (!s.toString().isEmpty()) {
-                    try {
-                        Date date;
-                        date = new SimpleDateFormat("yyyy.MM.dd HH:mm",Locale.getDefault()).parse(et_Date.getText().toString() + " " + et_Time.getText().toString());
-                        entry.setDate(date);
-                    }
-                    catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    this.getActivity(),
+                    (DatePickerDialog.OnDateSetListener) (view12, datePickerYear, monthOfYear, dayOfMonth) -> {
+                        try {
+                            String selectedDate = datePickerYear + "." + (monthOfYear + 1) + "." + dayOfMonth;
+                            Date datepicker_date;
+                            datepicker_date = new SimpleDateFormat("yyyy.MM.dd HH:mm",Locale.getDefault()).parse(selectedDate + " " + et_Time.getText().toString());
+                            btn_Date.setText(selectedDate);
+                            entry.setDate(datepicker_date);
+                        }
+                        catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    },
+                    year, month, day);
+            datePickerDialog.show();
         });
 
         dateF = new SimpleDateFormat("HH:mm", Locale.getDefault());
@@ -261,7 +264,7 @@ public class EntryFragment extends Fragment {
                 if (!editable.toString().isEmpty()) {
                     try {
                         Date date;
-                        date = new SimpleDateFormat("yyyy.MM.dd HH:mm",Locale.getDefault()).parse(et_Date.getText().toString() + " " + et_Time.getText().toString());
+                        date = new SimpleDateFormat("yyyy.MM.dd HH:mm",Locale.getDefault()).parse(btn_Date.getText().toString() + " " + et_Time.getText().toString());
                         entry.setDate(date);
                     }
                     catch (ParseException e) {

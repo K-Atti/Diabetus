@@ -81,16 +81,16 @@
                         style="@style/MyTextView"
                         android:text="@string/date"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/et_Date"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_Date"
                         app:layout_constraintStart_toEndOf="@id/image_Date"
                         app:layout_constraintTop_toTopOf="parent" />
 
 
-                    <EditText
-                        android:id="@+id/et_Date"
+                    <Button
+                        android:id="@+id/btn_Date"
                         style="@style/MyDefaultEditTextView"
                         android:autofillHints=""
-                        android:inputType="date"
+                        android:background="@android:color/transparent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textDate"
@@ -129,7 +129,8 @@
                         android:id="@+id/et_Time"
                         style="@style/MyDefaultEditTextView"
                         android:autofillHints=""
-                        android:inputType="number"
+                        android:inputType="text"
+                        android:digits="0123456789:"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textTime"
